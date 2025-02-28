@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>para Larih Oliveira</title>
+    <style>
+        body {
+            background-color: red;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .painel {
+            background-color: white;
+            width: 90%;
+            max-width: 400px;
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+        img {
+            width: 80%;
+            max-width: 250px;
+            height: auto;
+        }
+        .botoes {
+            position: relative;
+            margin-top: 10px;
+        }
+        #sim, #nao {
+            height: 40px;
+            width: 70px;
+            background-color: red;
+            border: 2px solid white;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+            margin: 5px;
+            position: absolute;
+        }
+        #sim {
+            left: 50%;
+            transform: translateX(-110%);
+        }
+        #nao {
+            left: 50%;
+            transform: translateX(10%);
+        }
+    </style>
+</head>
+<body>
+    <div class="painel">
+        <h1>Meio clichê, mas vai assim mesmo</h1>
+        <img src="https://i.pinimg.com/736x/fd/fe/15/fdfe152d5ab5a4708232a86774d0b035.jpg" alt="">
+        <h2>Bora namorar qualquer dia?</h2>
+        <div class="botoes">
+            <button id="sim" onclick="parabens()">Sim!</button>
+            <button id="nao" onmouseover="fuja()">Não!</button>
+        </div>
+    </div>
+    <script>
+        function fuja() {
+            var botaoNao = document.getElementById("nao");
+            var painel = document.querySelector(".painel");
+            var botoesContainer = document.querySelector(".botoes");
+            
+            var larguraPainel = painel.clientWidth;
+            var alturaPainel = painel.clientHeight;
+            var larguraBotao = botaoNao.offsetWidth;
+            var alturaBotao = botaoNao.offsetHeight;
+            
+            var maxX = larguraPainel - larguraBotao;
+            var maxY = alturaPainel - alturaBotao - botoesContainer.offsetTop;
+            
+            var aleatorioX = Math.max(0, Math.min(Math.floor(Math.random() * maxX), maxX));
+            var aleatorioY = Math.max(0, Math.min(Math.floor(Math.random() * maxY), maxY)) - 10;
+            
+            botaoNao.style.left = aleatorioX + "px";
+            botaoNao.style.top = aleatorioY + "px";
+        }
+
+        function parabens() {
+            alert("Parabéns, você fez uma boa escolha :)");
+        }
+    </script>
+</body>
+</html>
